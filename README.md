@@ -10,7 +10,11 @@ Requests open a prefilled email in the visitor's email app. The visitor must sen
 
 ## Hosting
 
-Serve the repository root as a static site. The GitHub Pages workflow builds a dedicated artifact containing only the page, configuration, and font. Enable GitHub Pages with **GitHub Actions** as the source in repository Settings → Pages if not already enabled. No packages or build step are needed.
+Deploy the repository root on the Vercel project that owns `vocalu.org`. Use the Other framework preset with no build command. No packages or build step are needed. Connect `drews5/vocalu` with `main` as its production branch.
+
+`vercel.json` rewrites both `/birthday` and `/birthdays` (including trailing-slash variants) to the same `birthday.html` page. Assets use root-relative URLs so they resolve on either route. The existing root page and other static files remain available. The obsolete GitHub Pages workflow is removed.
+
+The domain must already be assigned to this Vercel project, or be assigned through Vercel's domain settings. Repository configuration cannot assign a custom domain or prove a production deployment. Verify both `https://vocalu.org/birthday` and `https://vocalu.org/birthdays` after the production build completes.
 
 ## Validation
 
